@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">BillsReminder</string>
+    <string name="app_name">Bills Reminder</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Bills List</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_addn_new_bill">Add New Bill</string>
 </resources>
