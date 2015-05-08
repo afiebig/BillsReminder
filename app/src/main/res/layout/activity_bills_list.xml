@@ -20,13 +20,16 @@
     <LinearLayout android:id="@+id/footer" android:layout_width="match_parent"
         android:layout_height="wrap_content" android:orientation="horizontal"
         android:layout_alignParentBottom="true" style="@android:style/ButtonBar"
-        android:background="#000000">
+        android:background="#000000"
+        android:layout_weight="1"
+        >
 
         <Button android:id="@+id/NewBillButton" android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_weight="1"
             android:text="@string/NewBillButton"
             android:background="#000000"
             android:textColor="#FFFFFF"
+            android:onClick="newBill"
             />
 
         <View

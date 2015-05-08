@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddnNewBill"
-            android:label="@string/title_activity_addn_new_bill" >
+            android:name=".AddNewBill"
+            android:label="@string/title_activity_add_new_bill" >
         </activity>
     </application>
 
