@@ -1,6 +1,6 @@
 package cl.afiebig.billsreminder;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -10,14 +10,12 @@ import android.widget.DatePicker;
 
 import java.lang.reflect.Field;
 
-public class AddNewBill extends ActionBarActivity {
+public class AddNewBill extends Activity {
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_bill);
-
-        //Enable App Icon as the UP button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Remove Month and Year from the two Date Picker
         DatePicker picker1 = (DatePicker) findViewById(R.id.datePaymentDay);
@@ -42,23 +40,19 @@ public class AddNewBill extends ActionBarActivity {
                 }
             }
         }
-        catch (SecurityException e) {
-            Log.d("ERROR", e.getMessage());
-        }
-        catch (IllegalArgumentException e) {
-            Log.d("ERROR", e.getMessage());
-        }
-        catch (IllegalAccessException e) {
+        catch (SecurityException | IllegalAccessException | IllegalArgumentException e) {
             Log.d("ERROR", e.getMessage());
         }
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_new_bill, menu);
         return true;
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
