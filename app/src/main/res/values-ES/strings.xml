@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Cuentas por Pagar</string>
+
+    <string name="MainText">Lista de Cuentas</string>
+    <string name="action_add">Agregar Nueva</string>
+    <string name="action_settings">Configuracion</string>
+    <string name="title_activity_add_new_bill">Agregar Nueva Cuenta</string>
+    <string name="action_search">Buscar</string>
+</resources>
