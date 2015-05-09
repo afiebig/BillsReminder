@@ -10,14 +10,16 @@ import android.widget.DatePicker;
 
 import java.lang.reflect.Field;
 
-
 public class AddNewBill extends ActionBarActivity {
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_bill);
 
+        //Enable App Icon as the UP button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Remove Month and Year from the two Date Picker
         DatePicker picker1 = (DatePicker) findViewById(R.id.datePaymentDay);
         DatePicker picker2 = (DatePicker) findViewById(R.id.dateReminderDay);
         try {
@@ -51,15 +53,12 @@ public class AddNewBill extends ActionBarActivity {
         }
     }
 
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_new_bill, menu);
         return true;
     }
 
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
