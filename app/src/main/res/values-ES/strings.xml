@@ -6,10 +6,10 @@
     <string name="action_settings">Configuracion</string>
     <string name="title_activity_add_new_bill">Agregar Nueva Cuenta</string>
     <string name="action_search">Buscar</string>
-    <string name="lvlPaymentDate">Fecha de Pago</string>
-    <string name="lvlReminderDate">Fecha Recordatorio</string>
-    <string name="lvlDescription">Comentario</string>
-    <string name="lvlBillName">Cuenta</string>
     <string name="exampleBill">Chilextra</string>
     <string name="exampleDescription">Cuenta de la Luz, Mensual</string>
+    <string name="save">Guardar</string>
+    <string name="FechaPego">Fecha Pago</string>
+    <string name="BillDescription">Comentario</string>
+    <string name="BillName">Cuenta</string>
 </resources>

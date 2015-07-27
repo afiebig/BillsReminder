@@ -6,89 +6,105 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="cl.afiebig.billsreminder.AddNewBill">
 
-    <TableLayout android:id="@+id/footer" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal"
-        android:layout_weight="1"
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lvlBillName"
-                android:id="@+id/lvlBillName"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-            />
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textBillName"
-                android:hint="@string/exampleBill"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_weight="1"
-                android:layout_column="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lvlDescription"
-                android:id="@+id/lvlDescription"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                />
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textDescription"
-                android:hint="@string/exampleDescription"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_weight="1"
-                android:layout_column="1"/>
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lvlPaymentDate"
-                android:id="@+id/lvlPaymentDate"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_weight="1"
-                />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lvlReminderDate"
-                android:id="@+id/lvlReminderDate"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_column="1"
-                android:layout_weight="1"
+                android:text="@string/BillName"
+                android:id="@+id/txtBillName"
+                android:padding="5dp"
+                android:layout_margin="5dp"
                 />
 
-        </TableRow>
-        <TableRow>
-            <DatePicker
-                android:layout_width="0dp"
+            <EditText
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/datePaymentDay"
-                android:layout_weight="1"
-                android:calendarViewShown="false"
-                />
-            <DatePicker
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/dateReminderDay"
-                android:layout_weight="1"
-                android:calendarViewShown="false"
-                android:layout_column="1"
-                />
+                android:id="@+id/editBillName"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:hint="@string/exampleBill" />
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/BillDescription"
+                android:id="@+id/txtBillDescription"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editBillDescription"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:hint="@string/exampleDescription" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/FechaPego"
+                android:id="@+id/txtFechaPago"
+                android:padding="5dp"
+                android:baselineAligned="true"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+
+            <DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/datePicker"
+                android:spinnersShown="true"
+                android:calendarViewShown="false"
+                android:padding="5dp"
+                android:baselineAligned="true"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:id="@+id/button"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:onClick="save" />
+        </TableRow>
+
     </TableLayout>
-
 </RelativeLayout>

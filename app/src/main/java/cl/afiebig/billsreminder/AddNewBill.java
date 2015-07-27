@@ -7,42 +7,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class AddNewBill extends Activity {
+
+    private Bill bill;
+    private EditText billName;
+    private EditText comment;
+    private DatePicker payment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_bill);
 
-        //Remove Month and Year from the two Date Picker
-        DatePicker picker1 = (DatePicker) findViewById(R.id.datePaymentDay);
-        DatePicker picker2 = (DatePicker) findViewById(R.id.dateReminderDay);
-        try {
-            Field f[] = picker1.getClass().getDeclaredFields();
-            Field g[] = picker2.getClass().getDeclaredFields();
-            for (Field field : f) {
-                if (field.getName().equals("mYearPicker") || field.getName().equals("mYearSpinner")
-                        || field.getName().equals("mMonthPicker") || field.getName().equals("mMonthSpinner")) {
-                    field.setAccessible(true);
-                    Object yearPicker = field.get(picker1);
-                    ((View) yearPicker).setVisibility(View.GONE);
-                }
-            }
-            for (Field field2 : g) {
-                if (field2.getName().equals("mYearPicker") || field2.getName().equals("mYearSpinner")
-                        || field2.getName().equals("mMonthPicker") || field2.getName().equals("mMonthSpinner")) {
-                    field2.setAccessible(true);
-                    Object yearPicker = field2.get(picker2);
-                    ((View) yearPicker).setVisibility(View.GONE);
-                }
-            }
-        }
-        catch (SecurityException | IllegalAccessException | IllegalArgumentException e) {
-            Log.d("ERROR", e.getMessage());
-        }
+        billName = (EditText)findViewById(R.id.editBillName);
+        comment = (EditText)findViewById(R.id.editBillDescription);
+        payment = (DatePicker)findViewById(R.id.datePicker);
     }
 
     @Override
@@ -65,5 +51,20 @@ public class AddNewBill extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void dateChanged(View v){
+
+    }
+
+    public void save (View v){
+        //Do Save Stuffs.
+        int day = payment.getDayOfMonth();
+        int month = payment.getMonth();
+        int year = payment.getYear();
+
+        GregorianCalendar date = new GregorianCalendar( year, month, day);
+        bill = new Bill(billName.getText().toString(), comment.getText().toString(),date);
+        //Return no previus view.
     }
 }

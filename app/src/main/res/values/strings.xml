@@ -6,10 +6,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_new_bill">Add New Bill</string>
     <string name="action_search">Search</string>
-    <string name="lvlPaymentDate">Payment Date</string>
-    <string name="lvlReminderDate">Reminder Date</string>
-    <string name="lvlDescription">Description</string>
-    <string name="lvlBillName">Bill Name</string>
     <string name="exampleBill">Chilextra</string>
     <string name="exampleDescription">Energy Bill, Monthly</string>
+    <string name="save">Save</string>
+    <string name="FechaPego">Payment Date</string>
+    <string name="BillDescription">Bill Description</string>
+    <string name="BillName">Bill Name</string>
 </resources>
