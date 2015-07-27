@@ -1,10 +1,10 @@
 package cl.afiebig.billsreminder;
 
-import java.util.GregorianCalendar;
+import junit.framework.TestCase;
 
 /**
  *
- * ${FileName} created with Android Studio
+ * ${FileName} created with MonoDevelop
  * Created by afiebig on 7/27/15.
  * Alfredo Fiebig C. - afiebigc[AT]gmail[DOT]com
  * --------------------------------------------------------------------------
@@ -24,44 +24,33 @@ import java.util.GregorianCalendar;
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *    --------------------------------------------------------------------------
  **/
-public class Bill {
+public class BillTest extends TestCase {
 
-    private String billName;
-    private String description;
-    private GregorianCalendar paymentDate;
+    public void testGetBillName() throws Exception {
 
-    public Bill(String name, String description, GregorianCalendar date){
-        this.billName = name;
-        this.description = description;
-        this.paymentDate = date;
     }
 
-    public String getBillName() {
-        return billName;
+    public void testSetBillName() throws Exception {
+
     }
 
-    public void setBillName(String billName) {
-        this.billName = billName;
+    public void testGetDescription() throws Exception {
+
     }
 
-    public String getDescription() {
-        return description;
+    public void testSetDescription() throws Exception {
+
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void testGetPaymentDate() throws Exception {
+
     }
 
-    public GregorianCalendar getPaymentDate() {
-        return paymentDate;
+    public void testSetPaymentDate() throws Exception {
+
     }
 
-    public void setPaymentDate(GregorianCalendar paymentDate) {
-        this.paymentDate = paymentDate;
-    }
+    public void testToString() throws Exception {
 
-    @Override
-    public String toString() {
-        return super.toString();
     }
 }
