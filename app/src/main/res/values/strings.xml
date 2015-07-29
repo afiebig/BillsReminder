@@ -12,4 +12,5 @@
     <string name="FechaPego">Payment Date</string>
     <string name="BillDescription">Bill Description</string>
     <string name="BillName">Bill Name</string>
+    <string name="Amount">Amount</string>
 </resources>

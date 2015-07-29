@@ -1,39 +1,26 @@
 package cl.afiebig.billsreminder;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 /**
- *
- * ${FileName} created with Android Studio
- * Created by afiebig on 7/27/15.
+ * BillsReminder
+ * cl.afiebig.billsreminder created with Android Studio
+ * Created by afiebig on 7/28/15.
  * Alfredo Fiebig C. - afiebigc[AT]gmail[DOT]com
- * --------------------------------------------------------------------------
- *    ${projectName}
- *
- *    This program is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License
- *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *    --------------------------------------------------------------------------
- **/
+ */
+
 public class Bill {
 
     private String billName;
     private String description;
-    private GregorianCalendar paymentDate;
+    private String paymentDate;
+    private int amount;
 
-    public Bill(String name, String description, GregorianCalendar date){
+    public Bill(String name, String description, String date, int amount){
         this.billName = name;
         this.description = description;
         this.paymentDate = date;
+        this.amount = amount;
     }
 
     public String getBillName() {
@@ -52,12 +39,20 @@ public class Bill {
         this.description = description;
     }
 
-    public GregorianCalendar getPaymentDate() {
+    public String getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(GregorianCalendar paymentDate) {
+    public void setPaymentDate(String paymentDate) {
         this.paymentDate = paymentDate;
+    }
+
+    public int getAmount(){
+        return amount;
+    }
+
+    public void setAmount(int amount){
+        this.amount = amount;
     }
 
     @Override

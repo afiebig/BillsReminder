@@ -1,25 +1,33 @@
 package cl.afiebig.billsreminder;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 
-import java.lang.reflect.Field;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
+/**
+ * BillsReminder
+ * cl.afiebig.billsreminder created with Android Studio
+ * Created by afiebig on 7/28/15.
+ * Alfredo Fiebig C. - afiebigc[AT]gmail[DOT]com
+ */
 
 public class AddNewBill extends Activity {
+
+    public static final String TAG = "Bill";
 
     private Bill bill;
     private EditText billName;
     private EditText comment;
-    private DatePicker payment;
+    private EditText payment;
+    private EditText amount;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +36,8 @@ public class AddNewBill extends Activity {
 
         billName = (EditText)findViewById(R.id.editBillName);
         comment = (EditText)findViewById(R.id.editBillDescription);
-        payment = (DatePicker)findViewById(R.id.datePicker);
+        payment = (EditText)findViewById(R.id.datePicker);
+        amount = (EditText)findViewById(R.id.editAmount);
     }
 
     @Override
@@ -53,18 +62,32 @@ public class AddNewBill extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void dateChanged(View v){
-
-    }
 
     public void save (View v){
         //Do Save Stuffs.
-        int day = payment.getDayOfMonth();
-        int month = payment.getMonth();
-        int year = payment.getYear();
-
-        GregorianCalendar date = new GregorianCalendar( year, month, day);
-        bill = new Bill(billName.getText().toString(), comment.getText().toString(),date);
-        //Return no previus view.
+        try{
+            bill = new Bill(billName.getText().toString(), comment.getText().toString(),
+                    payment.getText().toString(), Integer.parseInt(amount.getText().toString()));
+            DB.getDb(this.getApplicationContext()).insertBill(bill);
+        } catch (Exception e){
+            Log.e(TAG, "Error al grabar bill", e);
+            new AlertDialog.Builder(this.getApplicationContext())
+                    .setTitle("Error")
+                    .setMessage("Unable to Save Bill")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // continue with delete
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
+        //Return to previus view.
+        this.finish();
     }
 }

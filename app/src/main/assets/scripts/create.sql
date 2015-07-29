@@ -1,0 +1,1 @@
+CREATE TABLE bills (_id INTEGER PRIMARY KEY AUTOINCREMENT, billName TEXT NOT NULL, description TEXT, payment TEXT, billValue NUMERIC);

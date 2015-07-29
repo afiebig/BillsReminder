@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by afiebig on 5/9/15.
- * Fragment Created to display the bills in the Main List
+ * BillsReminder
+ * cl.afiebig.billsreminder created with Android Studio
+ * Created by afiebig on 7/28/15.
+ * Alfredo Fiebig C. - afiebigc[AT]gmail[DOT]com
  */
+
 public class BillFragment extends Fragment {
 
     @Override
