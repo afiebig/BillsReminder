@@ -9,8 +9,8 @@
     <string name="exampleBill">Chilextra</string>
     <string name="exampleDescription">Energy Bill, Monthly</string>
     <string name="save">Save</string>
-    <string name="FechaPego">Payment Date</string>
+    <string name="PaymentDate">Payment Date</string>
     <string name="BillDescription">Bill Description</string>
-    <string name="BillName">Bill Name</string>
+    <string name="BillName">Bill</string>
     <string name="Amount">Amount</string>
 </resources>

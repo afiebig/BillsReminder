@@ -57,6 +57,6 @@ public class Bill {
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.billName + " "+ this.description + " " + this.paymentDate + " " + this.amount;
     }
 }

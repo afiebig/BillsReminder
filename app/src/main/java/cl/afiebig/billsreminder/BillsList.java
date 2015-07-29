@@ -1,5 +1,6 @@
 package cl.afiebig.billsreminder;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
@@ -9,6 +10,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
+import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 /**
  * BillsReminder
@@ -36,11 +42,31 @@ public class BillsList extends Activity {
 
     //Recore el cursor con bills y las dibuja en el listado principal
     private void PaintBills(){
-        SQLiteCursor cur = DB.getDb(this.getApplicationContext()).selectBill();
-        if (cur.getCount() > 0 ){
-            while (!cur.isAfterLast()){
+        Bill[] bills = DB.getDb(this.getApplicationContext()).selectBill();
+        TableLayout layout = (TableLayout)findViewById(R.id.billsTable);
+        for (int i = 0; i < bills.length; i++){
+            TableRow row = new TableRow(this);
+            row.setLayoutParams(new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
 
-            }
+            TextView bill = new TextView(row.getContext());
+            TextView date = new TextView(row.getContext());
+            TextView amount = new TextView(row.getContext());
+
+            bill.setLayoutParams( new TableLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,1));
+            date.setLayoutParams( new TableLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,1));
+            amount.setLayoutParams( new TableLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,1));
+
+            row.addView(bill);
+            row.addView(date);
+            row.addView(amount);
+            layout.addView(row);
         }
     }
 

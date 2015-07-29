@@ -9,8 +9,8 @@
     <string name="exampleBill">Chilextra</string>
     <string name="exampleDescription">Cuenta de la Luz, Mensual</string>
     <string name="save">Guardar</string>
-    <string name="FechaPego">Fecha Pago</string>
+    <string name="PaymentDate">Fecha Pago</string>
     <string name="BillDescription">Comentario</string>
     <string name="BillName">Cuenta</string>
-    <string name="Amount">Amount</string>
+    <string name="Amount">Precio</string>
 </resources>

@@ -68,20 +68,34 @@ public class DB extends SQLiteOpenHelper {
         }
     }
 
-    public SQLiteCursor selectBill() {
+    public Bill[] selectBill() {
         SQLiteDatabase base = this.db.getReadableDatabase();
         base.beginTransaction();
-        SQLiteCursor cursor = new SQLiteCursor(null,null,null);
+        Bill [] result = new Bill[1];;
+        SQLiteCursor cursor;
+
         try {
             cursor = (SQLiteCursor)base.query("bills", null, null, null, null, null, null);
             base.setTransactionSuccessful();
-            return cursor;
+            int i = 0;
+            if (cursor.getCount() > 0){
+                result = new Bill[cursor.getCount()];
+                while (cursor.moveToNext()){
+                    Bill a = new Bill(cursor.getString(1),cursor.getString(2),cursor.getString(3),
+                            cursor.getInt(4));
+                    result[i] = a;
+                    i++;
+                    Log.i(TAG,"Objeto "+i+" :" + a.toString());
+                }
+            } else {
+                Log.i(TAG,"Cursor sin resultados");
+            }
         } catch (Exception e) {
             Log.e(TAG, "Unable to get Bills");
         } finally {
             base.endTransaction();
         }
-        return cursor;
+        return result;
     }
 
     @Override
