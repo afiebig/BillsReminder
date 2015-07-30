@@ -5,8 +5,10 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
@@ -32,42 +34,81 @@ public class BillsList extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bills_list);
         Log.d(TAG, "Hola Mundo!");
+    }
 
-        //Inicializa la BD y llama a una BD de solo lectura para pintar la lista de bills
-        //TODO: Almacenear la BD en variable para poder pintar el select *;
+    @Override
+    protected  void onResume(){
+        super.onResume();
+
         PaintBills();
-
-
     }
 
     //Recore el cursor con bills y las dibuja en el listado principal
     private void PaintBills(){
+        final float scale = getResources().getDisplayMetrics().density;
+        int padding_5dp = (int) (6 * scale + 0.5f);
+
+        //Get the complete bills list from te DB
         Bill[] bills = DB.getDb(this.getApplicationContext()).selectBill();
+
+        //Get the table layout to add new rows and remove previous items
         TableLayout layout = (TableLayout)findViewById(R.id.billsTable);
+        layout.removeAllViews();
+
+        //Add all the bills to the view as new row
         for (int i = 0; i < bills.length; i++){
-            TableRow row = new TableRow(this);
+
+            //New Table Row for each bill
+            TableRow row = new TableRow(this.getApplicationContext());
             row.setLayoutParams(new TableRow.LayoutParams(
                     TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
 
-            TextView bill = new TextView(row.getContext());
-            TextView date = new TextView(row.getContext());
-            TextView amount = new TextView(row.getContext());
+            //Textview for bills data
+            TextView bill = new TextView(this.getApplicationContext());
+            TextView date = new TextView(this.getApplicationContext());
+            TextView amount = new TextView(this.getApplicationContext());
 
-            bill.setLayoutParams( new TableLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,1));
-            date.setLayoutParams( new TableLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,1));
-            amount.setLayoutParams( new TableLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,1));
+            //Layout for the TextView
+            TableRow.LayoutParams params = new TableRow.LayoutParams(
+                    TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.WRAP_CONTENT);
+            params.setMargins(padding_5dp,padding_5dp,padding_5dp,padding_5dp);
+            params.gravity = Gravity.LEFT;
 
+            bill.setLayoutParams(params);
+
+          //  params.weight = 2f;
+
+         //   params.gravity = Gravity.CENTER;
+            date.setLayoutParams(params);
+
+         //   params.gravity = Gravity.RIGHT;
+            ViewGroup.LayoutParams params1 = amount.getLayoutParams();
+            amount.setLayoutParams(params);
+
+            bill.setPadding(padding_5dp, padding_5dp, padding_5dp, padding_5dp);
+            date.setPadding(padding_5dp,padding_5dp,padding_5dp,padding_5dp);
+            amount.setPadding(padding_5dp,padding_5dp,padding_5dp,padding_5dp);
+
+            //Set the text for the textviews
+            bill.setText(bills[i].getBillName());
+            bill.setTextColor(Color.BLACK);
+            date.setText(bills[i].getPaymentDate());
+            date.setTextColor(Color.BLACK);
+            amount.setText(Integer.toString(bills[i].getAmount()));
+            amount.setTextColor(Color.BLACK);
+
+            //Add the new textviews and the row to the screen.
             row.addView(bill);
             row.addView(date);
             row.addView(amount);
-            layout.addView(row);
+            layout.addView(row, new TableLayout.LayoutParams(
+                    TableLayout.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.MATCH_PARENT));
         }
+    }
+
+    private void ClearBills(){
+
     }
 
     @Override
